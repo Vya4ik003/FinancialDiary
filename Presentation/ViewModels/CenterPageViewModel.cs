@@ -1,12 +1,18 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using Commons;
+﻿using Commons;
+using Commons.Mediator;
 
 namespace Presentation.ViewModels
 {
-    public class CenterPageViewModel : ViewModel
+    public class CenterPageViewModel : ViewModel, IColleague
     {
+        public IMediator ConcreteMediator { get; }
+
+        public CenterPageViewModel()
+        {
+            Mediator.ConcreteMediator.Colleague1 = this;
+            ConcreteMediator = Mediator.ConcreteMediator;
+        }
+
         private int _radiusBlur = 0;
         public int RadiusBlur
         {
@@ -27,12 +33,26 @@ namespace Presentation.ViewModels
             {
                 return new RelayCommand((_) =>
                 {
-                    if (RadiusBlur == 0)
-                        RadiusBlur = 10;
-                    else
-                        RadiusBlur = 0;
+                    //Send(new NotifyInformation(ActionTypes.AddCategory, new[] { 0 }));
+                    //if (RadiusBlur == 0)
+                    //    RadiusBlur = 10;
+                    //else
+                    //    RadiusBlur = 0;
                 });
             }
+        }
+
+        public void Notify(NotifyInformation information)
+        {
+            if (RadiusBlur == 0)
+                RadiusBlur = 10;
+            else
+                RadiusBlur = 0;
+        }
+
+        public void Send(NotifyInformation information)
+        {
+            ConcreteMediator.Send(information, this);
         }
     }
 }

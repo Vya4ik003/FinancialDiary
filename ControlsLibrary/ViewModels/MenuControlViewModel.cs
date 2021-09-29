@@ -1,17 +1,21 @@
 ﻿using System.Collections.Generic;
 using Commons;
+using Commons.Mediator;
 using System.Windows.Controls;
 using System.Collections.ObjectModel;
 using System.Linq;
 
 namespace ControlsLibrary.ViewModels
 {
-    public class MenuControlViewModel : ViewModel
+    public class MenuControlViewModel : ViewModel, IColleague
     {
+        public IMediator ConcreteMediator { get; }
         public ObservableCollection<TreeViewItem> TreeItems { get; set; }
 
         public MenuControlViewModel()
         {
+            Mediator.ConcreteMediator.Colleague2 = this;
+            ConcreteMediator = Mediator.ConcreteMediator;
             TreeItems = new ObservableCollection<TreeViewItem>
             {
                 new TreeViewItem()
@@ -52,8 +56,9 @@ namespace ControlsLibrary.ViewModels
             {
                 return new RelayCommand(obj =>
                 {
-                    var element = new TreeViewItem() { Header = "Empty" };
-                    TreeItems.Add(element);
+                    Send(new NotifyInformation(ActionTypes.EditCategory, new[] { 0 }));
+                    //var element = new TreeViewItem() { Header = "Empty" };
+                    //TreeItems.Add(element);
                 });
             }
         }
@@ -66,6 +71,16 @@ namespace ControlsLibrary.ViewModels
                 TreeItems.Remove(TreeItems.Last()),
                 (_) => TreeItems.Count > 0);
             }
+        }
+
+        public void Notify(NotifyInformation information)
+        {
+
+        }
+
+        public void Send(NotifyInformation information)
+        {
+            ConcreteMediator.Send(information, this);
         }
     }
 }
