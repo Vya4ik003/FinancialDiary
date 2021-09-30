@@ -13,6 +13,20 @@ namespace Presentation.ViewModels
             ConcreteMediator = Mediator.ConcreteMediator;
         }
 
+        private bool _isEnabled = true;
+        public bool IsEnabled
+        {
+            get
+            {
+                return _isEnabled;
+            }
+            set
+            {
+                _isEnabled = value;
+                OnPropertyChanged();
+            }
+        }
+
         private int _radiusBlur = 0;
         public int RadiusBlur
         {
@@ -31,23 +45,22 @@ namespace Presentation.ViewModels
         {
             get
             {
-                return new RelayCommand((_) =>
-                {
-                    //Send(new NotifyInformation(ActionTypes.AddCategory, new[] { 0 }));
-                    //if (RadiusBlur == 0)
-                    //    RadiusBlur = 10;
-                    //else
-                    //    RadiusBlur = 0;
-                });
+                return null;
             }
         }
 
         public void Notify(NotifyInformation information)
         {
             if (RadiusBlur == 0)
+            {
                 RadiusBlur = 10;
+                IsEnabled = false;
+            }
             else
+            {
+                IsEnabled = true;
                 RadiusBlur = 0;
+            }
         }
 
         public void Send(NotifyInformation information)

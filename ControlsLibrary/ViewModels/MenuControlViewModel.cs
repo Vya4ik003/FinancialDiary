@@ -57,8 +57,6 @@ namespace ControlsLibrary.ViewModels
                 return new RelayCommand(obj =>
                 {
                     Send(new NotifyInformation(ActionTypes.EditCategory, new[] { 0 }));
-                    //var element = new TreeViewItem() { Header = "Empty" };
-                    //TreeItems.Add(element);
                 });
             }
         }
