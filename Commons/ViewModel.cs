@@ -1,7 +1,7 @@
 ﻿using System.ComponentModel;
 using System.Runtime.CompilerServices;
 
-namespace Commons
+namespace Diary.Commons
 {
     public class ViewModel : INotifyPropertyChanged
     {

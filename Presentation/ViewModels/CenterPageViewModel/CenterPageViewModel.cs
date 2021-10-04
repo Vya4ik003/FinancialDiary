@@ -1,16 +1,15 @@
-﻿using Commons;
-using Commons.Mediator;
+﻿using Diary.Commons;
+using Diary.Commons.Mediator;
 
-namespace Presentation.ViewModels
+namespace Diary.Presentation.ViewModels.CenterPageViewModel
 {
-    public class CenterPageViewModel : ViewModel, IColleague
+    public class CenterPageViewModel : ViewModel, IColleague, ICenterPageViewModel
     {
         public IMediator ConcreteMediator { get; }
 
         public CenterPageViewModel()
         {
-            Mediator.ConcreteMediator.Colleague1 = this;
-            ConcreteMediator = Mediator.ConcreteMediator;
+
         }
 
         private bool _isEnabled = true;
@@ -38,14 +37,6 @@ namespace Presentation.ViewModels
             {
                 _radiusBlur = value;
                 OnPropertyChanged();
-            }
-        }
-
-        public RelayCommand ClickCommand
-        {
-            get
-            {
-                return null;
             }
         }
 

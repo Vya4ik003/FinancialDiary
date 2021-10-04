@@ -1,21 +1,20 @@
 ﻿using System.Collections.Generic;
-using Commons;
-using Commons.Mediator;
+using Diary.Commons;
+using Diary.Commons.Mediator;
 using System.Windows.Controls;
 using System.Collections.ObjectModel;
 using System.Linq;
 
-namespace ControlsLibrary.ViewModels
+namespace Diary.Controls.ViewModels.MenuControlViewModel
 {
-    public class MenuControlViewModel : ViewModel, IColleague
+    public class MenuControlViewModel : ViewModel, IColleague, IMenuControlViewModel
     {
         public IMediator ConcreteMediator { get; }
         public ObservableCollection<TreeViewItem> TreeItems { get; set; }
 
-        public MenuControlViewModel()
+        public MenuControlViewModel(IMediator mediator)
         {
-            Mediator.ConcreteMediator.Colleague2 = this;
-            ConcreteMediator = Mediator.ConcreteMediator;
+            ConcreteMediator = mediator;
             TreeItems = new ObservableCollection<TreeViewItem>
             {
                 new TreeViewItem()

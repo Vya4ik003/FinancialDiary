@@ -1,15 +1,17 @@
 ﻿using System.Windows.Controls;
+using Diary.Presentation.ViewModels.CenterPageViewModel;
 
-namespace Presentation.Views
+namespace Diary.Presentation.Views
 {
     /// <summary>
     /// Interaction logic for MenuPage.xaml
     /// </summary>
     public partial class CenterPage : Page
     {
-        public CenterPage()
+        public CenterPage(ICenterPageViewModel centerPageViewModel)
         {
             InitializeComponent();
+            DataContext = centerPageViewModel;
         }
     }
 }

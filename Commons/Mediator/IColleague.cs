@@ -1,4 +1,4 @@
-﻿namespace Commons.Mediator
+﻿namespace Diary.Commons.Mediator
 {
     public interface IColleague
     {

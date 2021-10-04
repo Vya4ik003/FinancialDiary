@@ -1,18 +1,13 @@
-﻿<Window x:Class="Presentation.Views.MainWindow"
+﻿<Window x:Class="Diary.Presentation.Views.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:vm="clr-namespace:Presentation.ViewModels"
-        xmlns:controls="clr-namespace:ControlsLibrary.Views;assembly=ControlsLibrary"
+        xmlns:controls="clr-namespace:Diary.Controls.Views;assembly=Diary.Controls"
         mc:Ignorable="d"
         Icon="{Binding LogoPath}"
         Title="MainWindow" Height="450" Width="800"
         WindowState="Maximized">
-
-    <Window.DataContext>
-        <vm:MainWindowViewModel/>
-    </Window.DataContext>
 
     <Window.Resources>
         <Style x:Key="Menu">
@@ -23,11 +18,11 @@
     
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Style="{StaticResource Menu}"/>
+            <ColumnDefinition Style="{StaticResource Menu}" Width="*"/>
             <ColumnDefinition Width="3*"/>
         </Grid.ColumnDefinitions>
 
-        <controls:MenuControl/>
+        <controls:MenuControl DataContext="{Binding MenuControlViewModel}"/>
         <Frame Grid.Column="1" Content="{Binding CenterPage}"/>
 
     </Grid>

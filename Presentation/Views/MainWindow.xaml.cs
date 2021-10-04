@@ -1,15 +1,18 @@
-﻿using System.Windows;
+﻿using System;
+using System.Windows;
+using Diary.Presentation.ViewModels.MainWindowViewModel;
 
-namespace Presentation.Views
+namespace Diary.Presentation.Views
 {
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
     public partial class MainWindow : Window
     {
-        public MainWindow()
+        public MainWindow(IMainWindowViewModel mainWindowViewModel)
         {
             InitializeComponent();
+            DataContext = mainWindowViewModel;
         }
     }
 }

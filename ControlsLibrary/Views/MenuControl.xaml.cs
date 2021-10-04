@@ -1,6 +1,6 @@
 ﻿using System.Windows.Controls;
 
-namespace ControlsLibrary.Views
+namespace Diary.Controls.Views
 {
     /// <summary>
     /// Interaction logic for MenuControl.xaml

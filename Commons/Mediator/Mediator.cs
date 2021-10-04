@@ -1,4 +1,4 @@
-﻿namespace Commons.Mediator
+﻿namespace Diary.Commons.Mediator
 {
     public class Mediator : IMediator
     {
@@ -9,14 +9,12 @@
         {
             if (colleague == Colleague1)
             {
-                Colleague2.Notify(information);
+                Colleague2?.Notify(information);
             }
             else
             {
-                Colleague1.Notify(information);
+                Colleague1?.Notify(information);
             }
         }
-
-        public static Mediator ConcreteMediator { get; } = new Mediator();
     }
 }
