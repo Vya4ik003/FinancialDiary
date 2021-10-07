@@ -14,6 +14,7 @@ namespace Diary.Controls.ViewModels.MenuControlViewModel
 
         public MenuControlViewModel(IMediator mediator)
         {
+            mediator.Colleague2 = this;
             ConcreteMediator = mediator;
             TreeItems = new ObservableCollection<TreeViewItem>
             {

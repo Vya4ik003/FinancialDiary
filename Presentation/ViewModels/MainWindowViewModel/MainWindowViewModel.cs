@@ -10,17 +10,14 @@ namespace Diary.Presentation.ViewModels.MainWindowViewModel
 {
     public class MainWindowViewModel : ViewModel, IMainWindowViewModel
     {
-        public string LogoPath { get; } = "pack://application:,,,/Commons;component/Resources/Logo.jpg";
+        public string LogoPath { get; } = "pack://application:,,,/Diary.Commons;component/Resources/Logo.jpg";
         public Page CenterPage { get; set; }
 
-        private readonly IServiceProvider _serviceProvider;
         public IMenuControlViewModel MenuControlViewModel { get; set; }
 
-        public MainWindowViewModel(IServiceProvider serviceProvider)
+        public MainWindowViewModel(IMenuControlViewModel menuControlViewModel, ICenterPageViewModel centerPageViewModel)
         {
-            _serviceProvider = serviceProvider;
-            MenuControlViewModel = _serviceProvider.GetRequiredService<IMenuControlViewModel>();
-            ICenterPageViewModel centerPageViewModel = _serviceProvider.GetRequiredService<ICenterPageViewModel>();
+            MenuControlViewModel = menuControlViewModel;
             CenterPage = new CenterPage(centerPageViewModel);
         }
     }

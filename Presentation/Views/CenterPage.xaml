@@ -3,33 +3,17 @@
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-      xmlns:vm="clr-namespace:Diary.Presentation.ViewModels"
+      xmlns:controls="clr-namespace:Diary.Controls.Views;assembly=Diary.Controls"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
-      Title="MenuPage" IsEnabled="{Binding IsEnabled}">
+      Title="MenuPage">
 
     <Border BorderThickness="5" BorderBrush="Brown">
         <Border.Effect>
-            <BlurEffect Radius="{Binding RadiusBlur}">
-                
-            </BlurEffect>
+            <BlurEffect Radius="{Binding RadiusBlur}"/>
         </Border.Effect>
-        <Grid >
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition/>
-                <ColumnDefinition/>
-                <ColumnDefinition/>
-                <ColumnDefinition/>
-                <ColumnDefinition/>
-            </Grid.ColumnDefinitions>
-            <Grid.RowDefinitions>
-                <RowDefinition/>
-                <RowDefinition/>
-                <RowDefinition/>
-                <RowDefinition/>
-                <RowDefinition/>
-            </Grid.RowDefinitions>
-            <Button Content="Click me!" Grid.Row="2" Grid.Column="2" Command="{Binding ClickCommand}"/>
+        <Grid>
+            <controls:TestControl/>
         </Grid>
     </Border>
 </Page>
