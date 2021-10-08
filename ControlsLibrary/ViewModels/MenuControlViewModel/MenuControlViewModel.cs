@@ -14,7 +14,7 @@ namespace Diary.Controls.ViewModels.MenuControlViewModel
 
         public MenuControlViewModel(IMediator mediator)
         {
-            mediator.Colleague2 = this;
+            mediator.MenuControlColleague = this;
             ConcreteMediator = mediator;
             TreeItems = new ObservableCollection<TreeViewItem>
             {
@@ -56,7 +56,7 @@ namespace Diary.Controls.ViewModels.MenuControlViewModel
             {
                 return new RelayCommand(obj =>
                 {
-                    Send(new NotifyInformation(ActionTypes.EditCategory, new[] { 0 }));
+                    Send(null);
                 });
             }
         }
@@ -71,12 +71,12 @@ namespace Diary.Controls.ViewModels.MenuControlViewModel
             }
         }
 
-        public void Notify(NotifyInformation information)
+        public void Notify(object information)
         {
 
         }
 
-        public void Send(NotifyInformation information)
+        public void Send(object information)
         {
             ConcreteMediator.Send(information, this);
         }

@@ -2,19 +2,24 @@
 {
     public class Mediator : IMediator
     {
-        public IColleague Colleague1 { get; set; }
-        public IColleague Colleague2 { get; set; }
+        public IColleague MenuControlColleague { get; set; }
+        public IColleague MainWindowColleague { get; set; }
+        public IColleague CenterPageColleague { get; set; }
+        public IColleague AddPageColleague { get; set; }
 
-        public void Send(NotifyInformation information, IColleague colleague)
+        public void Send(object information, IColleague colleague)
         {
-            if (colleague == Colleague1)
-            {
-                Colleague2?.Notify(information);
-            }
+            SendToColleague(colleague, MenuControlColleague, MainWindowColleague, information);
+            SendToColleague(colleague, MenuControlColleague, CenterPageColleague, information);
+            SendToColleague(colleague, MenuControlColleague, AddPageColleague, information);
+        }
+
+        private void SendToColleague(IColleague currentColleague, IColleague colleague1, IColleague colleague2, object information)
+        {
+            if (currentColleague == colleague1)
+                colleague2?.Send(information);
             else
-            {
-                Colleague1?.Notify(information);
-            }
+                colleague1?.Send(information);
         }
     }
 }

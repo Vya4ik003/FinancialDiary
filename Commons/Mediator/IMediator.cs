@@ -2,9 +2,11 @@
 {
     public interface IMediator
     {
-        IColleague Colleague1 { get; set; }
-        IColleague Colleague2 { get; set; }
+        IColleague MenuControlColleague { get; set; }
+        IColleague MainWindowColleague { get; set; }
+        IColleague CenterPageColleague { get; set; }
+        IColleague AddPageColleague { get; set; }
 
-        void Send(NotifyInformation information, IColleague colleague);
+        void Send(object information, IColleague colleague);
     }
 }

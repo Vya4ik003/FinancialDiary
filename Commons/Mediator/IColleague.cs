@@ -3,7 +3,7 @@
     public interface IColleague
     {
         IMediator ConcreteMediator { get; }
-        void Notify(NotifyInformation information);
-        void Send(NotifyInformation information);
+        void Notify(object information);
+        void Send(object information);
     }
 }

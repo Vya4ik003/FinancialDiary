@@ -2,6 +2,6 @@
 {
     public interface ICenterPageViewModel
     {
-        public int RadiusBlur { get; }
+        
     }
 }
