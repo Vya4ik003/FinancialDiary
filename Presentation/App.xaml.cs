@@ -6,6 +6,7 @@ using Diary.Presentation.ViewModels.CenterPageViewModel;
 using Diary.Presentation.ViewModels.MainWindowViewModel;
 using Microsoft.Extensions.DependencyInjection;
 using Diary.Commons.Mediator;
+using Diary.Presentation.ViewModels.AddCategoryPageViewModel;
 
 namespace Diary.Presentation
 {
@@ -29,6 +30,7 @@ namespace Diary.Presentation
             services.AddSingleton<IMainWindowViewModel, MainWindowViewModel>();
             services.AddSingleton<ICenterPageViewModel, CenterPageViewModel>();
             services.AddSingleton<IMenuControlViewModel, MenuControlViewModel>();
+            services.AddSingleton<IAddCategoryPageViewModel, AddCategoryPageViewModel>();
             services.AddSingleton<IMediator, Mediator>();
         }
 

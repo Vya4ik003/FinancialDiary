@@ -1,4 +1,6 @@
-﻿namespace Diary.Presentation.ViewModels.MainWindowViewModel
+﻿using Diary.Commons.Mediator;
+
+namespace Diary.Presentation.ViewModels.MainWindowViewModel
 {
     public interface IMainWindowViewModel
     {

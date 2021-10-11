@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Diary.Presentation.ViewModels.AddCategoryPageViewModel
 {
-    interface IAddCategoryPageViewModel
+    public interface IAddCategoryPageViewModel
     {
     }
 }

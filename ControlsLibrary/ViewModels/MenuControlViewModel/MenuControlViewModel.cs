@@ -4,6 +4,8 @@ using Diary.Commons.Mediator;
 using System.Windows.Controls;
 using System.Collections.ObjectModel;
 using System.Linq;
+using Diary.Commons.Mediator.NotifyInformations;
+using System.Windows.Data;
 
 namespace Diary.Controls.ViewModels.MenuControlViewModel
 {
@@ -14,7 +16,6 @@ namespace Diary.Controls.ViewModels.MenuControlViewModel
 
         public MenuControlViewModel(IMediator mediator)
         {
-            mediator.MenuControlColleague = this;
             ConcreteMediator = mediator;
             TreeItems = new ObservableCollection<TreeViewItem>
             {
@@ -56,7 +57,7 @@ namespace Diary.Controls.ViewModels.MenuControlViewModel
             {
                 return new RelayCommand(obj =>
                 {
-                    Send(null);
+                    Send(obj);
                 });
             }
         }
