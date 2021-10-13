@@ -1,8 +1,12 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Windows;
+using Diary.Presentation.Views;
+using Diary.Presentation.ViewModels.MainWindowViewModel;
+using Diary.Presentation.ViewModels.MainPageViewModel;
+using Diary.Controls.ViewModels.MenuControlViewModel;
 
-namespace Presentation
+namespace Diary.Presentation
 {
     /// <summary>
     /// Interaction logic for App.xaml
@@ -21,6 +25,12 @@ namespace Presentation
         private void ConfigureServices(ServiceCollection services)
         {
             services.AddSingleton<MainWindow>();
+            services.AddSingleton<IMainWindowViewModel, MainWindowViewModel>();
+
+            services.AddSingleton<MainPage>();
+            services.AddSingleton<IMainPageViewModel, MainPageViewModel>();
+
+            services.AddSingleton<IMenuControlViewModel, MenuControlViewModel>();
         }
 
         public void OnStartup(object sender, StartupEventArgs e)
