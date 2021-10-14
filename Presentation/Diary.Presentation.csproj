@@ -7,11 +7,15 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Page Include="App.xaml" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="5.0.2" />
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\ControlsLibrary\Diary.Controls.csproj" />
+    <ProjectReference Include="..\Controls\Diary.Controls.csproj" />
   </ItemGroup>
 
 </Project>

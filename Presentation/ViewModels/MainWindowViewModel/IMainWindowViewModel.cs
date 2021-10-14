@@ -2,6 +2,5 @@
 {
     public interface IMainWindowViewModel
     {
-        string LogoPath { get; }
     }
 }

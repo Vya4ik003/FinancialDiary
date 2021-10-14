@@ -1,27 +1,37 @@
-﻿using System.Windows.Controls;
-using Diary.Presentation.Views;
-using Diary.Presentation.ViewModels.CenterPageViewModel;
-using Diary.Commons;
-using Diary.Controls.ViewModels.MenuControlViewModel;
+﻿using Diary.Commons;
+using System.Windows.Controls;
 using System;
 using Microsoft.Extensions.DependencyInjection;
+using Diary.Presentation.Views;
+using Diary.Controls.ViewModels.MenuControlViewModel;
 
 namespace Diary.Presentation.ViewModels.MainWindowViewModel
 {
     public class MainWindowViewModel : ViewModel, IMainWindowViewModel
     {
-        public string LogoPath { get; } = "pack://application:,,,/Commons;component/Resources/Logo.jpg";
-        public Page CenterPage { get; set; }
-
-        private readonly IServiceProvider _serviceProvider;
         public IMenuControlViewModel MenuControlViewModel { get; set; }
+        public IServiceProvider ServiceProvider { get; set; }
 
-        public MainWindowViewModel(IServiceProvider serviceProvider)
+        private Page _centerPage;
+        public Page CenterPage
         {
-            _serviceProvider = serviceProvider;
-            MenuControlViewModel = _serviceProvider.GetRequiredService<IMenuControlViewModel>();
-            ICenterPageViewModel centerPageViewModel = _serviceProvider.GetRequiredService<ICenterPageViewModel>();
-            CenterPage = new CenterPage(centerPageViewModel);
+            get
+            {
+                return _centerPage;
+            }
+            set
+            {
+                _centerPage = value;
+                OnPropertyChanged();
+            }
         }
+
+        public MainWindowViewModel(IServiceProvider _serviceProvider)
+        {
+            ServiceProvider = _serviceProvider;
+            CenterPage = ServiceProvider.GetRequiredService<MainPage>();
+            MenuControlViewModel = ServiceProvider.GetRequiredService<IMenuControlViewModel>();
+        }
+
     }
 }

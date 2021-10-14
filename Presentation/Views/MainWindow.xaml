@@ -5,25 +5,17 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:controls="clr-namespace:Diary.Controls.Views;assembly=Diary.Controls"
         mc:Ignorable="d"
-        Icon="{Binding LogoPath}"
-        Title="MainWindow" Height="450" Width="800"
-        WindowState="Maximized">
+        Title="MainWindow" Height="450" Width="800" WindowState="Maximized">
 
-    <Window.Resources>
-        <Style x:Key="Menu">
-            <Setter Property="ColumnDefinition.MinWidth" Value="70"/>
-            <Setter Property="ColumnDefinition.MaxWidth" Value="300"/>
-        </Style>
-    </Window.Resources>
-    
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Style="{StaticResource Menu}" Width="*"/>
+            <ColumnDefinition/>
             <ColumnDefinition Width="3*"/>
         </Grid.ColumnDefinitions>
 
         <controls:MenuControl DataContext="{Binding MenuControlViewModel}"/>
         <Frame Grid.Column="1" Content="{Binding CenterPage}"/>
 
+        <Frame Grid.Column="1" Content="{Binding CenterPage}"/>
     </Grid>
 </Window>

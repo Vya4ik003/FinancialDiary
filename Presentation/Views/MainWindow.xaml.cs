@@ -9,10 +9,10 @@ namespace Diary.Presentation.Views
     /// </summary>
     public partial class MainWindow : Window
     {
-        public MainWindow(IMainWindowViewModel mainWindowViewModel)
+        public MainWindow(IMainWindowViewModel viewModel)
         {
             InitializeComponent();
-            DataContext = mainWindowViewModel;
+            DataContext = viewModel;
         }
     }
 }

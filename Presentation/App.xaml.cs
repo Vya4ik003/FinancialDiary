@@ -1,11 +1,10 @@
-﻿using System;
+﻿using Microsoft.Extensions.DependencyInjection;
+using System;
 using System.Windows;
 using Diary.Presentation.Views;
-using Diary.Controls.ViewModels.MenuControlViewModel;
-using Diary.Presentation.ViewModels.CenterPageViewModel;
 using Diary.Presentation.ViewModels.MainWindowViewModel;
-using Microsoft.Extensions.DependencyInjection;
-using Diary.Commons.Mediator;
+using Diary.Presentation.ViewModels.MainPageViewModel;
+using Diary.Controls.ViewModels.MenuControlViewModel;
 
 namespace Diary.Presentation
 {
@@ -27,14 +26,16 @@ namespace Diary.Presentation
         {
             services.AddSingleton<MainWindow>();
             services.AddSingleton<IMainWindowViewModel, MainWindowViewModel>();
-            services.AddSingleton<ICenterPageViewModel, CenterPageViewModel>();
+
+            services.AddSingleton<MainPage>();
+            services.AddSingleton<IMainPageViewModel, MainPageViewModel>();
+
             services.AddSingleton<IMenuControlViewModel, MenuControlViewModel>();
-            services.AddSingleton<IMediator, Mediator>();
         }
 
-        private void OnStartup(object sender, StartupEventArgs e)
+        public void OnStartup(object sender, StartupEventArgs e)
         {
-            MainWindow mainWindow = _serviceProvider.GetService<MainWindow>();
+            MainWindow mainWindow = _serviceProvider.GetRequiredService<MainWindow>();
             mainWindow.Show();
         }
     }
