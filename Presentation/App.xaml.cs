@@ -5,6 +5,8 @@ using Diary.Presentation.Views;
 using Diary.Presentation.ViewModels.MainWindowViewModel;
 using Diary.Presentation.ViewModels.MainPageViewModel;
 using Diary.Controls.ViewModels.MenuControlViewModel;
+using Diary.Commons.Mediator;
+using Diary.Presentation.ViewModels.AddCategoryPageViewModel;
 
 namespace Diary.Presentation
 {
@@ -24,13 +26,18 @@ namespace Diary.Presentation
 
         private void ConfigureServices(ServiceCollection services)
         {
-            services.AddSingleton<MainWindow>();
-            services.AddSingleton<IMainWindowViewModel, MainWindowViewModel>();
+            services.AddScoped<MainWindow>();
+            services.AddScoped<IMainWindowViewModel, MainWindowViewModel>();
 
-            services.AddSingleton<MainPage>();
-            services.AddSingleton<IMainPageViewModel, MainPageViewModel>();
+            services.AddScoped<MainPage>();
+            services.AddScoped<IMainPageViewModel, MainPageViewModel>();
 
-            services.AddSingleton<IMenuControlViewModel, MenuControlViewModel>();
+            services.AddScoped<IMenuControlViewModel, MenuControlViewModel>();
+
+            services.AddScoped<AddCategoryPage>();
+            services.AddScoped<IAddCategoryPageViewModel, AddCategoryPageViewModel>();
+
+            services.AddSingleton<IMediator, Mediator>();
         }
 
         public void OnStartup(object sender, StartupEventArgs e)
